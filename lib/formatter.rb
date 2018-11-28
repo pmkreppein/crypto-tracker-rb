@@ -36,7 +36,7 @@ def advanced(input_prices)
             ** USD: #{@parsed.ETH.USD}
             ** GBP: #{@parsed.ETH.GBP}
             ** EUR: #{@parsed.ETH.EUR}
-  HEREDOC
+HEREDOC
   end
 
 

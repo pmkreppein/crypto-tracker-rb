@@ -1,6 +1,4 @@
 require 'net/http'
-require 'json'
-
 
 class Networking
     def initialize
