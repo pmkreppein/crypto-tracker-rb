@@ -8,8 +8,4 @@ attr_accessor :networking, :format, :ui
         @ui = UI.new
         @ui.run()
     end
-
-
-
-
 end
