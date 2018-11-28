@@ -17,7 +17,6 @@ class Networking
 
     def refresh_prices()
       get_prices()
-      @prices
     end
 
     def last_report()

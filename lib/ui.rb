@@ -25,35 +25,49 @@ class UI
 
     def run()
         while true
+            system "clear"
             ui_loop()
             input = gets.chomp
 
             case input
               when "Q" , "q"
-                    puts "Thanks for using Crypto Tracker!  Please wait for program to close."
-                    sleep(1)
-                    system "clear"
-                    abort("Crypto Tracker closed successfully")
+                system "clear"
+                puts "Thanks for using Crypto Tracker!  Please wait for program to close."
+                sleep(1)
+                system "clear"
+                abort("Crypto Tracker closed successfully")
 
-              when "S", "s", "D", "d"
+              when "S", "s"
+                system "clear"
+                puts "#{@formatter.simple(@networking.last_report)}"
+                puts "Push any key to return to Main Menu."
+                input = gets.chomp
+                sleep(1) until input
+
+              when "D", "d"
+                system "clear"
                 puts "#{@formatter.advanced(@networking.last_report)}"
                 puts "Push any key to return to Main Menu."
                 input = gets.chomp
                 sleep(1) until input
 
               when "r", "R"
-                 puts "Refreshed Prices: #{@networking.refresh_prices}"
+                system "clear"
+                puts "Refreshing prices..."
+                sleep(1)
+                @networking.refresh_prices
+                puts "Prices Refreshed Successfully!"
 
               else
-                    puts "Sorry, that wasn't a choice I recognize.  Try again?"
-                    sleep(2)
-                    self.run()
+                puts "Sorry, that wasn't a choice I recognize.  Try again?"
+                sleep(2)
+                self.run()
             end
           end
 
 
-        end
 
+end
 
 
 
