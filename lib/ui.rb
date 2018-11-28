@@ -6,7 +6,6 @@ class UI
     def initialize()
       @networking = Networking.new
       @formatter = Formatter.new
-      puts "UI LOADED with Networking and Formatter!"
     end
 
 
@@ -34,14 +33,14 @@ class UI
                     puts "Thanks for using Crypto Tracker!  Please wait for program to close."
                     sleep(1)
                     system "clear"
-                    abort("Program closed successfully")
+                    abort("Crypto Tracker closed successfully")
 
               when "S", "s", "D", "d"
                 puts "#{@formatter.advanced(@networking.last_report)}"
-                puts "/n"
                 puts "Push any key to return to Main Menu."
                 input = gets.chomp
                 sleep(1) until input
+
               when "r", "R"
                  puts "Refreshed Prices: #{@networking.refresh_prices}"
 

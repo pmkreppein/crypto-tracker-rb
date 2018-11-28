@@ -1,12 +1,5 @@
 require 'json'
 class Formatter
-    def initialize()
-        puts "Formatter Booted"
-        @parsed = ""
-
-    end
-
-
 
 def parse(prices)
   @parsed = JSON.parse(prices, object_class: OpenStruct)
@@ -21,6 +14,7 @@ def simple(input_prices)
     -- Litecoin: #{@parsed.LTC.USD}
   HEREDOC
 end
+
 
 def advanced(input_prices)
   parse(input_prices)
@@ -43,5 +37,7 @@ def advanced(input_prices)
             ** GBP: #{@parsed.ETH.GBP}
             ** EUR: #{@parsed.ETH.EUR}
   HEREDOC
-end
+  end
+
+
 end
