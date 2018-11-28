@@ -2,5 +2,5 @@
 
 require_relative '../lib/crypto-tracker'
 
+CryptoTracker.new
 puts "Hello world from CMD!"
-
