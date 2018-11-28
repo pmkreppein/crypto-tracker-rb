@@ -29,7 +29,7 @@ class UI
             [D]etailed View: Bitcoin, Ethereum, and Litcoin prices in USD, GBP, EUR.
             [R]efresh: Refresh the current price data.
             [Q]uit: Exit the app
-            Please make a selection....
+            Please type a selection and press 'Return' or 'Enter'....
         HEREDOC
     end
 
