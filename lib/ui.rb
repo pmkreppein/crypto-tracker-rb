@@ -2,12 +2,12 @@ require_relative 'networking.rb'
 require_relative 'formatter.rb'
 
 class UI
-
+  #Spin up Networking and Formatter Classes
     def initialize()
       @networking = Networking.new
       @formatter = Formatter.new
     end
-
+#ASCII Art Block
     def ascii()
       puts <<-HEREDOC
       .o88b. d8888b. db    db d8888b. d888888b  .d88b.       d888888b d8888b.  .d8b.   .o88b. db   dD d88888b d8888b.
@@ -18,6 +18,8 @@ class UI
       `Y88P' 88   YD    YP    88         YP     `Y88P'          YP    88   YD YP   YP  `Y88P' YP   YD Y88888P 88   YD
       HEREDOC
     end
+
+#UI Menu Block
     def ui_loop()
 
         puts "#{ascii}"
@@ -33,14 +35,13 @@ class UI
         HEREDOC
     end
 
-
-
+#Core App Loop
     def run()
         while true
             system "clear"
             ui_loop()
             input = gets.chomp
-
+#Evaluate Choices
             case input
               when "Q" , "q"
                 system "clear"
@@ -48,7 +49,7 @@ class UI
                 sleep(1)
                 system "clear"
                 abort("Crypto Tracker closed successfully")
-
+#Simple Price Layout
               when "S", "s"
                 system "clear"
                 puts "#{ascii}"
@@ -56,7 +57,7 @@ class UI
                 puts "Push any key to return to Main Menu."
                 input = gets.chomp
                 sleep(1) until input
-
+#Detailed Price Layout
               when "D", "d"
                 system "clear"
                 puts "#{ascii}"
@@ -64,7 +65,7 @@ class UI
                 puts "Push any key to return to Main Menu."
                 input = gets.chomp
                 sleep(1) until input
-
+#Refresh Prices
               when "r", "R"
                 system "clear"
                 puts "#{ascii}"
@@ -72,7 +73,7 @@ class UI
                 @networking.refresh_prices
                 puts "Prices Refreshed Successfully!"
                 sleep(1)
-
+#Unknown Input
               else
                 system "clear"
                 puts "Sorry, that wasn't a choice I recognize.  Try again?"

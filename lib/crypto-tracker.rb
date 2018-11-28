@@ -1,7 +1,7 @@
 require_relative 'ui.rb'
 
 class CryptoTracker
-
+#App Boot
     def initialize()
         system "clear"
         puts "Welcome to Crypto Tracker!  Bear with us while we set things up!"

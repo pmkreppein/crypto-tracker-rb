@@ -1,10 +1,12 @@
 require 'json'
 class Formatter
-
+  
+#Parse JSON as OpenStruct
 def parse(prices)
   @parsed = JSON.parse(prices, object_class: OpenStruct)
 end
 
+#Simple Layout Format
 def simple(input_prices)
   parse(input_prices)
   puts <<-HEREDOC
@@ -15,7 +17,7 @@ def simple(input_prices)
   HEREDOC
 end
 
-
+#Advanced Format Layout
 def advanced(input_prices)
   parse(input_prices)
 
