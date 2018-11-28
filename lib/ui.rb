@@ -76,8 +76,9 @@ class UI
 #Unknown Input
               else
                 system "clear"
+                puts "¯\\_(ツ)_/¯"
                 puts "Sorry, that wasn't a choice I recognize.  Try again?"
-                sleep(2)
+                sleep(3)
                 self.run()
             end
 
