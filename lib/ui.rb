@@ -1,5 +1,4 @@
-require_relative 'networking.rb'
-require_relative 'formatter.rb'
+
 
 class UI
   #Spin up Networking and Formatter Classes
@@ -17,6 +16,15 @@ class UI
      Y8b  d8 88 `88.    88    88         88    `8b  d8'         88    88 `88. 88   88 Y8b  d8 88 `88. 88.     88 `88.
       `Y88P' 88   YD    YP    88         YP     `Y88P'          YP    88   YD YP   YP  `Y88P' YP   YD Y88888P 88   YD
       HEREDOC
+    end
+    
+    def startup()
+        system "clear"
+        puts "Welcome to Crypto Tracker!  Bear with us while we set things up!"
+        puts "Done!"
+        sleep(1)
+        system "clear"
+        run()
     end
 
 #UI Menu Block

@@ -1,4 +1,5 @@
 require 'json'
+require 'ostruct'
 class Formatter
   
 #Parse JSON as OpenStruct

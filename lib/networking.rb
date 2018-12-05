@@ -1,4 +1,4 @@
-require 'net/http'
+
 
 class Networking
 #Gets prices on Startup
@@ -19,7 +19,7 @@ class Networking
     end
 #Returns Most Recent price Report
     def last_report()
-      return @prices
+      @prices
     end
 
 end
