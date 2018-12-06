@@ -5,6 +5,8 @@ class UI
     def initialize()
       @networking = Networking.new
       @formatter = Formatter.new
+      data = @networking.prices
+      create_coins(data)
     end
 #ASCII Art Block
     def ascii()
@@ -21,6 +23,7 @@ class UI
     def startup()
         system "clear"
         puts "Welcome to Crypto Tracker!  Bear with us while we set things up!"
+        sleep(1)
         puts "Done!"
         sleep(1)
         system "clear"
@@ -43,6 +46,26 @@ class UI
         HEREDOC
     end
 
+  def run_refresh()
+    @networking.refresh_prices
+    data = @networking.prices
+    update_coins(data)
+  end
+
+  def create_coins(data)
+    @bitcoin = Coin.new(data.BTC)
+    @ethereum = Coin.new(data.ETH)
+    @litecoin = Coin.new(data.LTC)
+  end
+
+  def update_coins(data)
+    @bitcoin.update(data.BTC)
+    @ethereum.update(data.BTC)
+    @litecoin.update(data.BTC)
+ end
+
+
+
 #Core App Loop
     def run()
         while true
@@ -61,7 +84,12 @@ class UI
               when "S", "s"
                 system "clear"
                 puts "#{ascii}"
-                puts "#{@formatter.simple(@networking.last_report)}"
+                puts <<-HEREDOC
+                        Top Cryptos in USD:
+                        -- Bitcoin: #{@bitcoin.usd}
+                        -- Ethereum: #{@ethereum.usd}
+                        -- Litecoin: #{@litecoin.usd}
+                    HEREDOC
                 puts "Push any key to return to Main Menu."
                 input = gets.chomp
                 sleep(1) until input
@@ -78,7 +106,7 @@ class UI
                 system "clear"
                 puts "#{ascii}"
                 puts "Refreshing prices..."
-                @networking.refresh_prices
+                self.run_refresh()
                 puts "Prices Refreshed Successfully!"
                 sleep(1)
 #Unknown Input
