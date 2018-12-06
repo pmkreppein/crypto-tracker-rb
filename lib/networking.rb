@@ -18,9 +18,5 @@ class Networking
     def refresh_prices()
       get_prices()
     end
-#Returns Most Recent price Report
-    def last_report()
-      @prices
-    end
 
 end
