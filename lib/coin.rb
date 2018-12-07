@@ -1,15 +1,19 @@
 class Coin
-    @coins = []
-    attr_reader :name, :usd, :gbp, :eur, :raw_data
-  
+    @@all = []
+    attr_accessor :name, :USD, :GBP, :EUR 
     def initialize(data)
       update(data)
+      @@all << self
     end
 
     def update(data)
-      @usd = data.USD
-      @gbp = data.GBP
-      @eur = data.EUR
-      @raw_data = data
+      @USD = data.USD
+      @GBP = data.GBP
+      @EUR = data.EUR
+
+    end
+
+    def self.all
+      @@all
     end
   end  

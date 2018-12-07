@@ -24,25 +24,6 @@ class Constants
         HEREDOC
     end
 
-    def self.detailed_report(btc_data, ltc_data, eth_data)
-        puts <<-HEREDOC
-        Detailed Price Report
-          _________________
-              Bitcoin
-                ** USD: #{btc_data.USD}
-                ** GBP: #{btc_data.GBP}
-                ** EUR: #{btc_data.EUR}
-          _________________
-              Litecoin
-                ** USD: #{ltc_data.USD}
-                ** GBP: #{ltc_data.GBP}
-                ** EUR: #{ltc_data.EUR}
-          _________________
-              Ethereum:
-                ** USD: #{eth_data.USD}
-                ** GBP: #{eth_data.GBP}
-                ** EUR: #{eth_data.EUR}
-    HEREDOC
-    end
+
 
 end

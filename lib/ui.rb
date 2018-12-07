@@ -3,9 +3,7 @@
 class UI
   #Spin up Networking and Formatter Classes
   def initialize()
-    @networking = Networking.new
-    data = @networking.prices
-    create_coins(data)
+    Networking.get_prices()
   end
   
   #Loop for startup screen 
@@ -25,25 +23,17 @@ class UI
     Constants.main_menu()
   end
 
-#Refresh Prices Loop  
-def run_refresh()
-    @networking.refresh_prices
-    data = @networking.prices
-    update_coins(data)
-end
 
-#Create Coin Instances
-def create_coins(data)
-    @bitcoin = Coin.new(data.BTC)
-    @ethereum = Coin.new(data.ETH)
-    @litecoin = Coin.new(data.LTC)
-end
-
-#Update Coin prices
-def update_coins(data)
-    @bitcoin.update(data.BTC)
-    @ethereum.update(data.ETH)
-    @litecoin.update(data.LTC)
+def detailed_report()
+  puts "Detailed Price Report"
+  puts " "
+  Coin.all.each do |coin|
+    puts"  _________________"
+    puts"    #{coin.name}"
+    puts"      ** USD: #{coin.USD}"
+    puts"      ** EUR: #{coin.EUR}"
+    puts"      ** GBP: #{coin.GBP}"
+  end
 end
 
 
@@ -66,12 +56,11 @@ def run()
       when "S", "s"
         system "clear"
         Constants.ascii()
-        puts <<-HEREDOC
-                Top Cryptos in USD:
-                -- Bitcoin: #{@bitcoin.usd}
-                -- Ethereum: #{@ethereum.usd}
-                -- Litecoin: #{@litecoin.usd}
-            HEREDOC
+        puts "Top Cryptos in USD:"
+        Coin.all.each do |coin|
+          puts "-- #{coin.name}:  #{coin.USD}"
+        end
+
         puts "Push any key to return to Main Menu."
         input = gets.chomp
         sleep(1) until input
@@ -79,7 +68,7 @@ def run()
       when "D", "d"
         system "clear"
         Constants.ascii()
-        Constants.detailed_report(@bitcoin.raw_data, @litecoin.raw_data, @ethereum.raw_data)
+        detailed_report()
         puts "Push any key to return to Main Menu."
         input = gets.chomp
         sleep(1) until input
@@ -88,7 +77,7 @@ def run()
         system "clear"
         Constants.ascii()
         puts "Refreshing prices..."
-        self.run_refresh()
+        Networking.refresh_prices()
         puts "Prices Refreshed Successfully!"
         sleep(1)
 #Unknown Input
